@@ -2,13 +2,14 @@ import React from 'react'
 import { useState } from 'react'
 
 
-export default function Guess(props) {
+export default function Board(props) {
  
     const [keepGame, setKeepGame] = useState(true)
     const [guess, setGuess] = useState('')
     const [message, setMessage] = useState('')
     const [animation, setAnimation] = useState(true)
-    
+    const [score, setScore] = useState(100)
+
     const handleChange = (event) => {
         setGuess(event.target.value)
 
@@ -23,12 +24,16 @@ export default function Guess(props) {
         if(guessNumber === props.random){
             setMessage("Congratulations! You guessed correctly!")
             setKeepGame(false)
+
+            props.getScore(score)
         }
         else if (guessNumber < props.random) {
             setMessage("Try a higher number.")
+            setScore(score - 10);
         }
         else {
             setMessage("Try a lower number.")
+            setScore(score - 10);
         }
 
         setAnimation(false)
@@ -49,6 +54,8 @@ export default function Guess(props) {
             </div>
         )
     }
+
+   
   
   return (
     <div>
@@ -69,7 +76,11 @@ export default function Guess(props) {
         />
         <button id="button" type="submit">Click</button>
       </form>
+
       <p>{message}</p>
+      <p></p>
+      <p>Your Score: { score }</p>
+
     </div>
   )
 }
