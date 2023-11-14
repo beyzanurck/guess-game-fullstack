@@ -19,7 +19,7 @@
  
 
 
-![guess-game](/Users/tpl622_8/Desktop/Techtonica/react-projects/guess-game-fullStack/client/public/guess-game.png)
+![guess-game](/client/public/guess-game.png)
 
 ## Project Setup
 
