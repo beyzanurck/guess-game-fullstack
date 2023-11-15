@@ -20,6 +20,7 @@ export default function TopPlayers() {
     }, [])
   return (
     <div>
+      <p style={{color: "red"}}>nickname - score</p>
 
         {
             topPlayers.length > 0 ? 

@@ -14,6 +14,7 @@ function App() {
 
 
   const randomInt =  Math.floor(Math.random() * 101)
+  console.log("sayi: ", randomInt)
 
   function passScore (score) {
     setLastScore(score)
@@ -29,6 +30,8 @@ function App() {
 
   return (
     <div>
+
+      <PlayerList lastScore = {lastScore}/>
 
       {/* displays player when the button is clicked */}
       <div style={{marginTop: '50px', marginBottom: '80px'}}>

@@ -28,6 +28,8 @@ app.put('/:id', async (req, res) => {
 
       const {nickname, score } = req.body;
 
+      console.log("EDIT: ", id, nickname, score)
+
       const editedPlayer = await db.query(
         "UPDATE players SET nickname = $1, score = $2 WHERE id = $3 RETURNING *",
         [nickname, score, id]
