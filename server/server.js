@@ -85,7 +85,7 @@ app.delete('/:id', async (req, res) => {
 app.get('/top-players', async (req, res) => {
     
     try{
-        const { rows: topPlayers } = await db.query('SELECT * FROM players ORDER BY score DESC LIMIT 10');
+        const { rows: topPlayers } = await db.query('SELECT * FROM players ORDER BY score ASC LIMIT 10');
         res.send(topPlayers);
 
     } catch(error){
