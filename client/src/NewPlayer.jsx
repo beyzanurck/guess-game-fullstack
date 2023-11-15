@@ -8,6 +8,7 @@ export default function NewPlayer({onClose}) {
         setNickname(event.target.value);
     }
     
+    //send a post request to add new user!
     const addNewPlayer = async (newPlayer) => {
         try {
             const response = await fetch("http://localhost:1212/new-player", {

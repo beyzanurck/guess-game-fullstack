@@ -29,15 +29,19 @@ function App() {
 
   return (
     <div>
-      <PlayerList lastScore = {lastScore}/>
 
-      <button onClick={()=> setShowNewPlayer(true)}>New Player</button>
-      {
-        showNewPlayer&&
-        <NewPlayer onClose={handleClose}/>
-      }
+      {/* displays player when the button is clicked */}
+      <div style={{marginTop: '50px', marginBottom: '80px'}}>
 
+        <button onClick={()=> setShowNewPlayer(true)}>New Player</button>
+        {
+          showNewPlayer&&
+          <NewPlayer onClose={handleClose}/>
+        }
 
+      </div>
+
+      
       <Board random = {randomInt} getScore = {passScore}/>
 
       <button onClick={()=> setShow(true)}>Show Tops</button>
