@@ -15,6 +15,9 @@ export default function PlayerList({lastScore}) {
 
 
     const editScore = async () => {
+
+        const lastPlayerIndex = player.length - 1;
+        
         try {
             if (player.length === 0) {
                 console.log('Player data is not loaded yet.');
@@ -23,11 +26,11 @@ export default function PlayerList({lastScore}) {
     
             
             const updatedPlayer = {
-                ...player[0], 
+                ...player[lastPlayerIndex], 
                 score: lastScore 
             };
     
-            const response = await fetch(`http://localhost:1212/${player[0].id}`, {
+            const response = await fetch(`http://localhost:1212/${player[lastPlayerIndex].id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedPlayer)  
