@@ -4,18 +4,42 @@ export default function NewPlayer({onClose}) {
 
     const [nickname, setNickname] = useState("")
 
-    function handleClose() {
-
+    function handleChange(event){
+        setNickname(event.target.value);
+    }
+    
+    const addNewPlayer = async (newPlayer) => {
+        try {
+            const response = await fetch("http://localhost:1212/new-player", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newPlayer)
+            });
+            
+            if (response.ok) {
+                onClose(); 
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.error);
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+    
+    
+    function handleSubmit(e) {
+        e.preventDefault();
+        addNewPlayer({ nickname });
     }
 
     
-    
     return (
 
-        <form> 
+        <form onSubmit={handleSubmit}> 
             <input 
                 name="nickname"
-                // onChange={handleChange}
+                onChange={handleChange}
                 value={nickname}
                 placeholder="nickname"
                 required
@@ -23,7 +47,7 @@ export default function NewPlayer({onClose}) {
                 maxLength={15}
             />
 
-            <button onClick={onClose}>Submit</button>
+            <button>Submit</button>
         </form>
     )
 }
