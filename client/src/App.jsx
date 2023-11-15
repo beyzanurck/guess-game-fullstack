@@ -23,6 +23,10 @@ function App() {
     console.log(lastScore);
   }, [lastScore]);
 
+  function handleClose() {
+    setShowNewPlayer(false)
+  }
+
   return (
     <div>
       <PlayerList lastScore = {lastScore}/>
@@ -30,7 +34,7 @@ function App() {
       <button onClick={()=> setShowNewPlayer(true)}>New Player</button>
       {
         showNewPlayer&&
-        <NewPlayer onClose={() => setShowNewPlayer(false)}/>
+        <NewPlayer onClose={handleClose}/>
       }
 
 
